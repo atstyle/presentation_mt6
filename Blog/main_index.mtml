@@ -1,0 +1,98 @@
+<!DOCTYPE html><mt:Unless regex_replace="/\s*\n+/g","\n">
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+
+  Conformed to Movable Type 6
+           Yasuhisa Yanagi (code)
+-->
+<html lang="<$mt:BlogLanguage$>">
+
+<head>
+<meta charset="<$mt:PublishCharset$>">
+<meta name="generator" content="<$mt:ProductName version="1"$>">
+<title><$mt:BlogName$></title>
+
+<script src="http://html5slides.googlecode.com/svn/trunk/slides.js"></script>
+
+<style>
+/* Your individual styles here, or just use inline styles if that's what you want. */
+
+body {
+    font-family: Arial, Helvetica, Tahoma, Verdana,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro", Meiryo, "メイリオ", sans-serif !important;
+}
+
+.slides.template-default article.biglogo  {
+    background: url("images/slide-logo-l.png") no-repeat scroll 50% 50% white !important;
+}
+
+.slides.template-default article {
+    background: url("images/slide-logo-s.png") no-repeat scroll 710px 600px white !important; /* 適宜位置を調整してください */
+}
+</style>
+
+</head>
+
+<body style="display: none">
+
+<section class="slides layout-regular template-default">
+
+<article class="biglogo"></article>
+
+<mt:Ignore>================ウェブページ===============</mt:Ignore>
+
+
+
+<mt:If tag="BlogPageCount">
+
+<mt:Pages lastn="1">
+<article>
+<h1><$mt:PageTitle$></h1>
+<$mt:PageBody replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+<mt:If tag="PageMore" convert_breaks="0">
+<div id="more">
+<$mt:PageMore replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</div>
+</mt:If>
+<div class='source'>
+<p>Powered by <a href="http://www.sixapart.jp/movabletype/">Movable Type  <$MTVersion$></a></p>
+</div>
+</article>
+</mt:Pages>
+
+</mt:If>
+<mt:Ignore>================ウェブページ===============</mt:Ignore>
+
+<mt:Ignore>=================ブログ記事================</mt:Ignore>
+<mt:If tag="BlogEntryCount">
+
+<mt:Entries lastn="0" sort_order="ascend">
+<mt:SetVarBlock name="CTag"><mt:EntryTags><$mt:TagName></mt:EntryTags></mt:SetVarBlock>
+<article<mt:EntryIfTagged> class="<$mt:GetVar name="CTag"$>"</mt:EntryIfTagged>>
+<h3><$mt:EntryTitle$></h3>
+<mt:IfNonEmpty tag="EntryBody">
+<$mt:EntryBody replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</mt:IfNonEmpty>
+<mt:IfNonEmpty tag="EntryMore">
+<$mt:EntryMore replace="<br />","<br>" regex_replace="/<img([^>]+) \/>/g","<img$1>"$>
+</mt:IfNonEmpty>
+</article>
+</mt:Entries>
+
+</mt:If>
+
+
+<mt:Ignore>=================/ ブログ記事================</mt:Ignore>
+
+</section>
+
+</body>
+
+</html></mt:Unless>
